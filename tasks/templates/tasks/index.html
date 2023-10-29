@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <title>Tasks</title>
+  </head>
+  <body>
+    <ul>
+      {% for task in tasks %} {#Using this locical statment FOR alows us to loop the varible tasks and display all the tasks save there #}
+      <li>{{ task }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

@@ -21,6 +21,7 @@ from django.urls import include, path # we must add the include as we are using 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', include("hello.urls")), # Here we are creating a new url named hello/ . this path will include the file urls inside the directory hello. inside the urls.py we already created a path with an empty string "". 
-    path('newyear/', include("newyear.urls"))# Here we are creating a new root for the new app "newyear" same as above. 
+    path('newyear/', include("newyear.urls")),# Here we are creating a new root for the new app "newyear" same as above. 
+    path('tasks/', include("tasks.urls")) # Here we are creating a new root for the new app "tasks" same as above. 
     
 ]
