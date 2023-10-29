@@ -1,18 +1,21 @@
-{% load static %} {# this is how we add our styles.css file. by adding the static folder first but we must also add our style.css by link underneath #}
+{% load static %} {# this is how we add our styles.css file. by adding the
+static folder first but we must also add our style.css by link underneath #}
 
 <!DOCTYPE html>
 <html lang="eng">
   <head>
     <title>NewYear</title>
-    <link href="{% static 'newyear/styles.css' %}" rel="stylesheet"> {# this is the django best practice to include css files to our html. but we could also do it the normal way. #}
+    <link href="{% static 'newyear/styles.css' %}" rel="stylesheet" />
+    {# this is the django best practice to include css files to our html. but we
+    could also do it the normal way. #}
   </head>
   <body>
-
-    {% if newyear %} {#The {% %} sign is use to aply locical statments inside a django HTML#}
-        <h1>YES</h1>
+    {% if newyear %} {#The {% %} sign is use to aply locical statments inside a
+    django HTML#}
+    <h1>YES</h1>
     {% else %}
-        <h1>NO</h1>
-    {% endif %} {# The "endif" statment is required by django to end the logical condition IF. this is because there is no indentation#}
-
+    <h1>NO</h1>
+    {% endif %} {# The "endif" statment is required by django to end the logical
+    condition IF. this is because there is no indentation#}
   </body>
 </html>
