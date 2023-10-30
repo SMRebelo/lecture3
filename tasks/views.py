@@ -9,7 +9,7 @@ class NewTaskForm(forms.Form):
     priority = forms.IntegerField(label="Priority", min_value=1, max_value=10) # Adding the fiels to our form such as priority and also add conditions such as min as max values. this will automaticly add the fiels to our form without touching the html file 
 
 def index(request):
-    if "tasks" not in reques.session: # Here we start with linking the tasks to the useres. i belive only using cach
+    if "tasks" not in request.session: # Here we start with linking the tasks to the useres. i belive only using cach. we must create a table using the console
         request.session["tasks"] = [] # basicly if the user doesnt have a list of task, this will generate a new one
     return render(request, "tasks/index.html",{ # creating a html template to display tasks
         "tasks": request.session["tasks"] # this is adding the varible that contains all my tasks display abouve and saving it in a variable to display at the html 
@@ -21,7 +21,7 @@ def add(request):
         form = NewTaskForm(request.POST) # This will create an instance of the class NewTaskForm with all data sent in POST method
         if form.is_valid(): # here we are checking if the form its valid and in the line below we have access to that data
             task = form.cleaned_data["task"] # We save the information of the "task" the user submited as we have a variable in the class called task and save it a variable called task.  
-            tasks.append(task) # Here we are saving the task in our list of tasks. 
+            request.session["tasks"] += [task]
             return HttpResponseRedirect(reverse("tasks:index")) # this django method is used to redirect us to the task list right after we added a new task. this must also be imported abouve
         else: # if the task its not valid then we get the form again but with the existing data so we can change it. we do not get a empty form 
             return render(request, "tasks/add.html", {
