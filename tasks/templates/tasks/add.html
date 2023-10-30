@@ -10,10 +10,11 @@
     {% extends "tasks/layout.html" %} {# this is the django command to implement this code in our layout.html file #}   
 
     {% block body %}
+    <h1>Add Task</h1>
     <form action="{% url 'tasks:add' %}" method="POST" > {# Here we are giving the form a place to send the information too. #}
         {% csrf_token %} {# csrf_token its a security mesure already builted by django that prevents forms to be send from another app that its not our own app. this will generate a token that has to match the token in the form in order to validate the post form method#}
-        <h1>Add Task</h1>
-        <input type="text" name="task">
+        {{ form }} {# Here we implement the django shortcut for forms by calling it#}
+        {#<input type="text" name="task">     This is the old way to build a form #} 
         <input type="submit">
     </form>
     <a href="{% url 'tasks:index' %}">View Tasks</a>{# {% url 'add' %} we use this adcional feuture from django because like this django will search for the NAME we gave the path in our url.py file insted of the actual url, this means that if we change the url, django will automaticly change it asweel! the "tasks:" is to avoid name colision between app #}
