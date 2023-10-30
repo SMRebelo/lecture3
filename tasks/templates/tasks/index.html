@@ -1,13 +1,23 @@
-<!DOCTYPE html>
+{#<!DOCTYPE html>
 <html lang="eng">
   <head>
     <title>Tasks</title>
   </head>
-  <body>
+  <body>#}
+
+    {# since we´ve created a layout.html page that will host all other html files, we can delete everythin from this page except the logical conditions.#}
+
+{% extends "tasks/layout.html" %} {# this is the django command to implement this code in our layout.html file #}   
+
+{% block body %}
+<h1>Tasks</h1>
     <ul>
       {% for task in tasks %} {#Using this locical statment FOR alows us to loop the varible tasks and display all the tasks save there #}
       <li>{{ task }}</li>
       {% endfor %}
     </ul>
-  </body>
-</html>
+    <a href="{% url 'tasks:add' %}">Add a New Task</a> {# {% url 'add' %} we use this adcional feuture from django because like this django will search for the NAME we gave the path in our url.py file insted of the actual url, this means that if we change the url, django will automaticly change it asweel! the "tasks:" is to avoid name colision between app #}
+{% endblock %}
+
+  {#</body>
+</html>#}
